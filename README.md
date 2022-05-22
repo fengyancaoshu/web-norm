@@ -12,7 +12,7 @@
 2. cd 进入项目目录
 3. 若环境中不存在 yarn/npm，则需要先安装yarn
 
-```cmd
+```shell
 # 安装依赖包
 yarn # 或 npm i
 
@@ -22,7 +22,7 @@ yarn dev # 或 npm run dev
 
 ## Build
 
-```cmd
+```shell
 # 构建
 yarn build
 ```
