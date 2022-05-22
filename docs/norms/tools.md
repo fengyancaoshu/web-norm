@@ -122,7 +122,7 @@ module.exports = {
 
 1、 安装stylelint
 
-```cmd
+```shell
 yarn add -D stylelint
 ```
 
@@ -145,42 +145,47 @@ module.exports = {
 
 在多人协作的背景下，git 仓库和 workflow 的作用很重要。而对于 commit 提交的信息说明存在一定规范
 
-* commitlint: 安装，制定提交规范（采用默认）
+* 安装代码校验依赖
 
-```cmd
-npm install --save-dev @commitlint/config-conventional @commitlint/cli
+初始化 husky, 会在根目录创建 .husky 文件夹
+
+```shell
+npm i lint-staged husky -D
+npm set-script prepare "husky install" # 在package.json中添加脚本
+npm run prepare # 初始化husky,将 git hooks 钩子交由,husky执行
+```
+
+pre-commit 执行 npx lint-staged 指令
+
+```shell
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+
+根目录创建 .lintstagedrc.json 文件控制检查和操作方式
+
+```json
+{
+    "*.{js,jsx,ts,tsx}": ["prettier --write .", "eslint  --fix"],
+    "*.md": ["prettier --write"]
+}
+```
+
+* 安装提交信息依赖
+
+```shell
+npm i commitlint @commitlint/config-conventional -D
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
 
 * 生成配置文件commitlint.config.js，当然也可以是 .commitlintrc.js
 
-```cmd
+```shell
 echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js
-```
-
-* husky: 还要为 git 配置 husky ，对 git 的 commit 操作进行校验。husky继承了Git下所有的钩子，在触发钩子的时候，husky可以阻止不合法的commit，push等等
-
-```cmd
-npm install husky --save-dev
-```
-
-* 在 package.json 中引入 husky
-
-```json
-// package.json
-{
-  ...
-  ...
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  }
-}
 ```
 
 * 提交格式
 
-```cmd
+```shell
 git commit -m <type>[optional scope]: <description>
 ```
 
