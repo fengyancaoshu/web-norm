@@ -10,7 +10,7 @@
 
 1. git clone 或 download 该项目
 2. cd 进入项目目录
-3. 若环境中不存在 yarn/npm，则需要先安装yarn
+3. 若环境中不存在 yarn/npm，则需要先安装 yarn
 
 ```shell
 # 安装依赖包

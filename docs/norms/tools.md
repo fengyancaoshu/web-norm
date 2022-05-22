@@ -2,7 +2,7 @@
 
 ## .editorconfig
 
-统一编辑器编码风格，编辑器推荐使用 vscode, 对应的插件名是EditorConfig for VS Code
+统一编辑器编码风格，编辑器推荐使用 vscode, 对应的插件名是 EditorConfig for VS Code
 常用配置如下
 
 ```csharp
@@ -30,9 +30,9 @@ indent_size = 2
 
 ## eslint+prettier+vuter
 
-vscode设置代码自动格式化
+vscode 设置代码自动格式化
 
-* setting.json中配置如下
+- setting.json 中配置如下
 
 ```javascript
 {
@@ -62,7 +62,7 @@ vscode设置代码自动格式化
 }
 ```
 
-* 项目目录下添加 .prettierrc
+- 项目目录下添加 .prettierrc
 
 ```javascript
 {
@@ -72,7 +72,7 @@ vscode设置代码自动格式化
 }
 ```
 
-* 项目目录下添加 .eslintrc.js
+- 项目目录下添加 .eslintrc.js
 
 ```javascript
 module.exports = {
@@ -116,11 +116,11 @@ module.exports = {
 
 ## stylelint
 
-* 其支持 Less、Sass 等这类预处理器
-* 在社区活跃度上，有非常多的第三方插件。
-* 在Facebook，Github，WordPress 等公司得到实践，能够覆盖很多场景
+- 其支持 Less、Sass 等这类预处理器
+- 在社区活跃度上，有非常多的第三方插件。
+- 在 Facebook，Github，WordPress 等公司得到实践，能够覆盖很多场景
 
-1、 安装stylelint
+1、 安装 stylelint
 
 ```shell
 yarn add -D stylelint
@@ -134,10 +134,10 @@ module.exports = {
   plugins: [],
   extends: "stylelint-config-standard", // 这是官方推荐的方式
   rules: {
-    "at-rule-empty-line-before": "always"|"never",
-    "at-rule-name-case": "lower"|"upper",
+    "at-rule-empty-line-before": "always" | "never",
+    "at-rule-name-case": "lower" | "upper",
     "block-no-empty": true,
-  }
+  },
 };
 ```
 
@@ -145,7 +145,7 @@ module.exports = {
 
 在多人协作的背景下，git 仓库和 workflow 的作用很重要。而对于 commit 提交的信息说明存在一定规范
 
-* 安装代码校验依赖
+- 安装代码校验依赖
 
 初始化 husky, 会在根目录创建 .husky 文件夹
 
@@ -165,44 +165,44 @@ npx husky add .husky/pre-commit "npx lint-staged"
 
 ```json
 {
-    "*.{js,jsx,ts,tsx}": ["prettier --write .", "eslint  --fix"],
-    "*.md": ["prettier --write"]
+  "*.{js,jsx,ts,tsx}": ["prettier --write .", "eslint  --fix"],
+  "*.md": ["prettier --write"]
 }
 ```
 
-* 安装提交信息依赖
+- 安装提交信息依赖
 
 ```shell
 npm i commitlint @commitlint/config-conventional -D
 npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
 
-* 生成配置文件commitlint.config.js，当然也可以是 .commitlintrc.js
+- 生成配置文件 commitlint.config.js，当然也可以是 .commitlintrc.js
 
 ```shell
 echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js
 ```
 
-* 提交格式
+- 提交格式
 
 ```shell
 git commit -m <type>[optional scope]: <description>
 ```
 
-> * type ：用于表明我们这次提交的改动类型，是新增了功能？还是修改了测试代码？又或者是更新了文档？
-> * optional scope：一个可选的修改范围。用于标识此次提交主要涉及到代码中哪个模块。
-> * description：一句话描述此次提交的主要内容，做到言简意赅。
+> - type ：用于表明我们这次提交的改动类型，是新增了功能？还是修改了测试代码？又或者是更新了文档？
+> - optional scope：一个可选的修改范围。用于标识此次提交主要涉及到代码中哪个模块。
+> - description：一句话描述此次提交的主要内容，做到言简意赅。
 
-类型 |  描述
--|-|-
-build | 编译相关的修改，例如发布版本、对项目构建或者依赖的改动
-chore | 其他修改, 比如改变构建流程、或者增加依赖库、工具等
-ci | 持续集成修改
-docs | 文档修改
-feat | 新特性、新功能
-fix | 修改bug
-perf | 优化相关，比如提升性能、体验
-refactor | 代码重构
-revert | 回滚到上一个版本
-style | 代码格式修改, 注意不是 css 修改
-test | 测试用例修
+| 类型     | 描述                                                   |
+| -------- | ------------------------------------------------------ |
+| build    | 编译相关的修改，例如发布版本、对项目构建或者依赖的改动 |
+| chore    | 其他修改, 比如改变构建流程、或者增加依赖库、工具等     |
+| ci       | 持续集成修改                                           |
+| docs     | 文档修改                                               |
+| feat     | 新特性、新功能                                         |
+| fix      | 修改 bug                                               |
+| perf     | 优化相关，比如提升性能、体验                           |
+| refactor | 代码重构                                               |
+| revert   | 回滚到上一个版本                                       |
+| style    | 代码格式修改, 注意不是 css 修改                        |
+| test     | 测试用例修                                             |

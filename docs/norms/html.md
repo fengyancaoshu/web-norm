@@ -11,7 +11,7 @@
 7. IE 兼容模式
 
 ```html
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 ```
 
 1. 移动端禁止缩放
@@ -94,5 +94,5 @@ PC 端头部示范：
 > 7. aria-\*, role
 > 8. required, readonly, disabled
 >
->> class 是为高可复用组件设计的，所以应处在第一位；
->> id 更加具体且应该尽量少使用，所以将它放在第二位。
+> > class 是为高可复用组件设计的，所以应处在第一位；
+> > id 更加具体且应该尽量少使用，所以将它放在第二位。

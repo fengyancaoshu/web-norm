@@ -27,7 +27,7 @@
 
     ```javascript
     let foo = 1,
-        bar = foo;
+      bar = foo;
     bar = 9;
     console.log(foo, bar); // => 1, 9
     ```
@@ -40,7 +40,7 @@
 
     ```javascript
     let foo = [1, 2],
-        bar = foo;
+      bar = foo;
     bar[0] = 9;
     console.log(foo[0], bar[0]); // => 9, 9
     ```
@@ -61,15 +61,15 @@
   ```javascript
   // bad
   let superman = {
-    class: 'superhero',
-    default: { clark: 'kent' },
-    private: true
+    class: "superhero",
+    default: { clark: "kent" },
+    private: true,
   };
   // good
   let superman = {
-    klass: 'superhero',
-    defaults: { clark: 'kent' },
-    hidden: true
+    klass: "superhero",
+    defaults: { clark: "kent" },
+    hidden: true,
   };
   ```
 
@@ -84,22 +84,22 @@
   let items = [];
   ```
 
-- 如果你不知道数组的长度，使用push
+- 如果你不知道数组的长度，使用 push
 
   ```javascript
   let someStack = [];
   // bad
-  someStack[someStack.length] = 'abracadabra';
+  someStack[someStack.length] = "abracadabra";
   // good
-  someStack.push('abracadabra');
+  someStack.push("abracadabra");
   ```
 
-- 当你需要拷贝数组时使用slice
+- 当你需要拷贝数组时使用 slice
 
   ```javascript
   let len = items.length,
-      itemsCopy = [],
-      i;
+    itemsCopy = [],
+    i;
   // bad
   for (i = 0; i < len; i++) {
     itemsCopy[i] = items[i];
@@ -108,7 +108,7 @@
   itemsCopy = items.slice();
   ```
 
-- 使用slice将类数组的对象转成数组.
+- 使用 slice 将类数组的对象转成数组.
 
   ```javascript
   function trigger() {
@@ -121,63 +121,69 @@
 
 - 对字符串使用单引号 `''`
 
-    ```javascript
-    // bad
-    let name = "Bob Parr";
-    // good
-    let name = 'Bob Parr';
-    // bad
-    let fullName = "Bob " + this.lastName;
-    // good
-    let fullName = 'Bob ' + this.lastName;
-    ```
+  ```javascript
+  // bad
+  let name = "Bob Parr";
+  // good
+  let name = "Bob Parr";
+  // bad
+  let fullName = "Bob " + this.lastName;
+  // good
+  let fullName = "Bob " + this.lastName;
+  ```
 
-- 超过80个字符的字符串应该使用字符串连接换行
+- 超过 80 个字符的字符串应该使用字符串连接换行
+
   - 注: 如果过度使用，长字符串连接可能会对性能有影响.
 
     ```javascript
     // bad
-    let errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    let errorMessage =
+      "This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.";
     // bad
-    let errorMessage = 'This is a super long error that \
+    let errorMessage =
+      "This is a super long error that \
     was thrown because of Batman. \
     When you stop to think about \
     how Batman had anything to do \
     with this, you would get nowhere \
-    fast.';
+    fast.";
     // good
-    let errorMessage = 'This is a super long error that ' +
-    'was thrown because of Batman.' +
-    'When you stop to think about ' +
-    'how Batman had anything to do ' +
-    'with this, you would get nowhere ' +
-    'fast.';
+    let errorMessage =
+      "This is a super long error that " +
+      "was thrown because of Batman." +
+      "When you stop to think about " +
+      "how Batman had anything to do " +
+      "with this, you would get nowhere " +
+      "fast.";
     ```
 
-- 编程时使用join而不是字符串连接来构建字符串，特别是IE
+- 编程时使用 join 而不是字符串连接来构建字符串，特别是 IE
 
   ```javascript
-  let items,
-      messages,
-      length, i;
-  messages = [{
-    state: 'success',
-    message: 'This one worked.'
-  },{
-    state: 'success',
-    message: 'This one worked as well.'
-  },{
-    state: 'error',
-    message: 'This one did not work.'
-  }];
+  let items, messages, length, i;
+  messages = [
+    {
+      state: "success",
+      message: "This one worked.",
+    },
+    {
+      state: "success",
+      message: "This one worked as well.",
+    },
+    {
+      state: "error",
+      message: "This one did not work.",
+    },
+  ];
   length = messages.length;
   // bad
   function inbox(messages) {
-    items = '<ul>';
+    items = "<ul>";
     for (i = 0; i < length; i++) {
-      items += '<li>' + messages[i].message + '</li>';
+      items += "<li>" + messages[i].message + "</li>";
     }
-    return items + '</ul>';
+    return items + "</ul>";
   }
   // good
   function inbox(messages) {
@@ -185,7 +191,7 @@
     for (i = 0; i < length; i++) {
       items[i] = messages[i].message;
     }
-    return '<ul><li>' + items.join('</li><li>') + '</li></ul>';
+    return "<ul><li>" + items.join("</li><li>") + "</li></ul>";
   }
   ```
 
@@ -193,35 +199,36 @@
 
 - 函数表达式:
 
-    ```javascript
-    // 匿名函数表达式
-    let anonymous = function() {
-      return true;
-    };
-    // 有名函数表达式
-    let named = function named() {
-      return true;
-    };
-    // 立即调用函数表达式
-    (function() {
-      console.log('Welcome to the Internet. Please follow me.');
-    })();
-    ```
+  ```javascript
+  // 匿名函数表达式
+  let anonymous = function () {
+    return true;
+  };
+  // 有名函数表达式
+  let named = function named() {
+    return true;
+  };
+  // 立即调用函数表达式
+  (function () {
+    console.log("Welcome to the Internet. Please follow me.");
+  })();
+  ```
 
 - 绝对不要在一个非函数块里声明一个函数，把那个函数赋给一个变量。浏览器允许你这么做，但是它们解析不同。
-  - **注:** ECMA-262定义把`块`定义为一组语句，函数声明不是一个语句。[阅读ECMA-262对这个问题的说明](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+
+  - **注:** ECMA-262 定义把`块`定义为一组语句，函数声明不是一个语句。[阅读 ECMA-262 对这个问题的说明](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
     // bad
     if (currentUser) {
       function test() {
-        console.log('Nope.');
+        console.log("Nope.");
       }
     }
     // good
     if (currentUser) {
       let test = function test() {
-        console.log('Yup.');
+        console.log("Yup.");
       };
     }
     ```
@@ -246,12 +253,12 @@
   ```javascript
   let luke = {
     jedi: true,
-    age: 28
+    age: 28,
   };
   function getProp(prop) {
     return luke[prop];
   }
-  let isJedi = getProp('jedi');
+  let isJedi = getProp("jedi");
   ```
 
 ## 变量
@@ -265,37 +272,40 @@ superPower = new SuperPower();
 let superPower = new SuperPower();
 ```
 
-- 使用一个 `let` 以及新行声明多个变量，缩进4个空格。
+- 使用一个 `let` 以及新行声明多个变量，缩进 4 个空格。
 
-    ```javascript
-    // bad
-    let items = getItems();
-    let goSportsTeam = true;
-    let dragonball = 'z';
-    // good
-    let items = getItems(),
-        goSportsTeam = true,
-        dragonball = 'z';
-    ```
+  ```javascript
+  // bad
+  let items = getItems();
+  let goSportsTeam = true;
+  let dragonball = "z";
+  // good
+  let items = getItems(),
+    goSportsTeam = true,
+    dragonball = "z";
+  ```
 
   - 最后再声明未赋值的变量，当你想引用之前已赋值变量的时候很有用。
 
     ```javascript
     // bad
-    let i, len, dragonball,
-        items = getItems(),
-        goSportsTeam = true;
+    let i,
+      len,
+      dragonball,
+      items = getItems(),
+      goSportsTeam = true;
     // bad
-    let i, items = getItems(),
-        dragonball,
-        goSportsTeam = true,
-        len;
+    let i,
+      items = getItems(),
+      dragonball,
+      goSportsTeam = true,
+      len;
     // good
     let items = getItems(),
-        goSportsTeam = true,
-        dragonball,
-        length,
-        i;
+      goSportsTeam = true,
+      dragonball,
+      length,
+      i;
     ```
 
   - 在作用域顶部声明变量，避免变量声明和赋值引起的相关问题。
@@ -362,24 +372,24 @@ let superPower = new SuperPower();
 
 - 使用快捷方式.
 
-    ```javascript
-    // bad
-    if (name !== '') {
-      // ...stuff...
-    }
-    // good
-    if (name) {
-      // ...stuff...
-    }
-    // bad
-    if (collection.length > 0) {
-      // ...stuff...
-    }
-    // good
-    if (collection.length) {
-      // ...stuff...
-    }
-    ```
+  ```javascript
+  // bad
+  if (name !== "") {
+    // ...stuff...
+  }
+  // good
+  if (name) {
+    // ...stuff...
+  }
+  // bad
+  if (collection.length > 0) {
+    // ...stuff...
+  }
+  // good
+  if (collection.length) {
+    // ...stuff...
+  }
+  ```
 
   - 阅读 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) 了解更多
 
@@ -409,53 +419,53 @@ let superPower = new SuperPower();
 
 - 使用 `/** ... */` 进行多行注释，包括描述，指定类型以及参数值和返回值
 
-    ```javascript
-    // bad
-    // make() returns a new element
-    // based on the passed in tag name
-    //
-    // @param <String> tag
-    // @return <Element> element
-    function make(tag) {
-      // ...stuff...
-      return element;
-    }
-    // good
-    /**
-    * make() returns a new element
-    * based on the passed in tag name
-    * @param <String> tag
-    * @return <Element> element
-    */
-    function make(tag) {
-        // ...stuff...
-        return element;
-    }
-    ```
+  ```javascript
+  // bad
+  // make() returns a new element
+  // based on the passed in tag name
+  //
+  // @param <String> tag
+  // @return <Element> element
+  function make(tag) {
+    // ...stuff...
+    return element;
+  }
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed in tag name
+   * @param <String> tag
+   * @return <Element> element
+   */
+  function make(tag) {
+    // ...stuff...
+    return element;
+  }
+  ```
 
 - 使用 `//` 进行单行注释，在评论对象的上面进行单行注释，注释前放一个空行.
 
-    ```javascript
-    // bad
-    let active = true;  // is current tab
-    // good
-    // is current tab
-    let active = true;
-    // bad
-    function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      let type = this._type || 'no type';
-      return type;
-    }
-    // good
-    function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      let type = this._type || 'no type';
-      return type;
-    }
-    ```
+  ```javascript
+  // bad
+  let active = true; // is current tab
+  // good
+  // is current tab
+  let active = true;
+  // bad
+  function getType() {
+    console.log("fetching type...");
+    // set the default type to 'no type'
+    let type = this._type || "no type";
+    return type;
+  }
+  // good
+  function getType() {
+    console.log("fetching type...");
+    // set the default type to 'no type'
+    let type = this._type || "no type";
+    return type;
+  }
+  ```
 
   - 如果你有一个问题需要重新来看一下或如果你建议一个需要被实现的解决方法的话需要在你的注释前面加上 `FIXME` 或 `TODO` 帮助其他人迅速理解
 
@@ -518,42 +528,42 @@ function foo(a, b, c, d, g, j) {
 - 在语句的开始执行类型转换.
 - 字符串:
 
-    ```javascript
-    //  => this.reviewScore = 9;
-    // bad
-    let totalScore = this.reviewScore + '';
-    // good
-    let totalScore = '' + this.reviewScore;
-    // bad
-    let totalScore = '' + this.reviewScore + ' total score';
-    // good
-    let totalScore = this.reviewScore + ' total score';
-    ```
+  ```javascript
+  //  => this.reviewScore = 9;
+  // bad
+  let totalScore = this.reviewScore + "";
+  // good
+  let totalScore = "" + this.reviewScore;
+  // bad
+  let totalScore = "" + this.reviewScore + " total score";
+  // good
+  let totalScore = this.reviewScore + " total score";
+  ```
 
 - 对数字使用 `parseInt` 并且总是带上类型转换的基数.
 
-   ```javascript
-   let inputValue = '4';
-   // bad
-   let val = new Number(inputValue);
-   // bad
-   let val = +inputValue;
-   // bad
-   let val = inputValue >> 0;
-   // bad
-   let val = parseInt(inputValue);
-   // good
-   let val = Number(inputValue);
-   // good
-   let val = parseInt(inputValue, 10);
-   // good
-   /**
+  ```javascript
+  let inputValue = "4";
+  // bad
+  let val = new Number(inputValue);
+  // bad
+  let val = +inputValue;
+  // bad
+  let val = inputValue >> 0;
+  // bad
+  let val = parseInt(inputValue);
+  // good
+  let val = Number(inputValue);
+  // good
+  let val = parseInt(inputValue, 10);
+  // good
+  /**
    * parseInt was the reason my code was slow.
    * Bitshifting the String to coerce it to a
    * Number made it a lot faster.
    */
-   let val = inputValue >> 0;
-   ```
+  let val = inputValue >> 0;
+  ```
 
 - 布尔值:
 
@@ -573,23 +583,23 @@ let hasAge = !!age;
 
   ```javascript
   function Jedi() {
-    console.log('new jedi');
+    console.log("new jedi");
   }
   // bad
   Jedi.prototype = {
     fight: function fight() {
-      console.log('fighting');
+      console.log("fighting");
     },
     block: function block() {
-      console.log('blocking');
-    }
+      console.log("blocking");
+    },
   };
   // good
   Jedi.prototype.fight = function fight() {
-    console.log('fighting');
+    console.log("fighting");
   };
   Jedi.prototype.block = function block() {
-    console.log('blocking');
+    console.log("blocking");
   };
   ```
 
@@ -597,42 +607,41 @@ let hasAge = !!age;
 
   ```javascript
   // bad
-  Jedi.prototype.jump = function() {
+  Jedi.prototype.jump = function () {
     this.jumping = true;
     return true;
   };
-  Jedi.prototype.setHeight = function(height) {
+  Jedi.prototype.setHeight = function (height) {
     this.height = height;
   };
   let luke = new Jedi();
   luke.jump(); // => true
-  luke.setHeight(20) // => undefined
+  luke.setHeight(20); // => undefined
   // good
-  Jedi.prototype.jump = function() {
+  Jedi.prototype.jump = function () {
     this.jumping = true;
     return this;
   };
-  Jedi.prototype.setHeight = function(height) {
+  Jedi.prototype.setHeight = function (height) {
     this.height = height;
     return this;
   };
   let luke = new Jedi();
-  luke.jump()
-    .setHeight(20);
+  luke.jump().setHeight(20);
   ```
 
-- 可以写一个自定义的toString()方法，但是确保它工作正常并且不会有副作用。
+- 可以写一个自定义的 toString()方法，但是确保它工作正常并且不会有副作用。
 
   ```javascript
   function Jedi(options) {
     options || (options = {});
-    this.name = options.name || 'no name';
+    this.name = options.name || "no name";
   }
   Jedi.prototype.getName = function getName() {
     return this.name;
   };
   Jedi.prototype.toString = function toString() {
-    return 'Jedi - ' + this.getName();
+    return "Jedi - " + this.getName();
   };
   ```
 
@@ -649,7 +658,7 @@ let hasAge = !!age;
   });
   ```
 
-    更好:
+  更好:
 
   ```js
   // good
@@ -664,13 +673,13 @@ let hasAge = !!age;
 
 - 模块应该以 `!` 开始，这保证了如果一个有问题的模块忘记包含最后的分号在合并后不会出现错误
 - 这个文件应该以驼峰命名，并在同名文件夹下，同时导出的时候名字一致
-- 加入一个名为noConflict()的方法来设置导出的模块为之前的版本并返回它
+- 加入一个名为 noConflict()的方法来设置导出的模块为之前的版本并返回它
 - 总是在模块顶部声明 `'use strict';`
 
 ```javascript
 // fancyInput/fancyInput.js
-!function(global) {
-  'use strict';
+!(function (global) {
+  "use strict";
   let previousFancyInput = global.FancyInput;
   function FancyInput(options) {
     this.options = options || {};
@@ -680,49 +689,49 @@ let hasAge = !!age;
     return FancyInput;
   };
   global.FancyInput = FancyInput;
-}(this);
+})(this);
 ```
 
 ## jQuery
 
-- 缓存jQuery查询
+- 缓存 jQuery 查询
 
 ```javascript
 // bad
 function setSidebar() {
-  $('.sidebar').hide();
+  $(".sidebar").hide();
   // ...stuff...
-  $('.sidebar').css({
-    'background-color': 'pink'
+  $(".sidebar").css({
+    "background-color": "pink",
   });
 }
 // good
 function setSidebar() {
-  let $sidebar = $('.sidebar');
+  let $sidebar = $(".sidebar");
   $sidebar.hide();
   // ...stuff...
   $sidebar.css({
-    'background-color': 'pink'
+    "background-color": "pink",
   });
 }
 ```
 
-- 对DOM查询使用级联的 `$('.sidebar ul')` 或 `$('.sidebar ul')`
-- 对有作用域的jQuery对象查询使用 `find`
+- 对 DOM 查询使用级联的 `$('.sidebar ul')` 或 `$('.sidebar ul')`
+- 对有作用域的 jQuery 对象查询使用 `find`
 
 ```javascript
 // bad
-$('.sidebar', 'ul').hide();
+$(".sidebar", "ul").hide();
 // bad
-$('.sidebar').find('ul').hide();
+$(".sidebar").find("ul").hide();
 // good
-$('.sidebar ul').hide();
+$(".sidebar ul").hide();
 // good
-$('.sidebar > ul').hide();
+$(".sidebar > ul").hide();
 // good (slower)
-$sidebar.find('ul');
+$sidebar.find("ul");
 // good (faster)
-$($sidebar[0]).find('ul');
+$($sidebar[0]).find("ul");
 ```
 
 ## ES6+ 基本规范
@@ -742,7 +751,7 @@ $($sidebar[0]).find('ul');
 - 对所有的引用使用 const ；不要使用 var；
 
   > 为什么？这能确保你无法对引用重新赋值，也不会导致出现 bug 或难以理解。
-  >
+
 ```javascript
 // bad
 var a = 1;
@@ -755,7 +764,7 @@ const b = 2;
 - 如果你一定需要可变动的引用，使用 let 代替 var；
 
   > 为什么？因为 let 是块级作用域，而 var 是函数作用域。
-  >
+
 ```javascript
 // bad
 var count = 1;
@@ -814,7 +823,7 @@ const atom = {
 - 使用对象属性值的简写；
 
 ```javascript
-const lukeSkywalker = 'Luke Skywalker';
+const lukeSkywalker = "Luke Skywalker";
 // bad
 const obj = {
   lukeSkywalker: lukeSkywalker,
@@ -841,9 +850,9 @@ const items = [];
 ```javascript
 const someStack = [];
 // bad
-someStack[someStack.length] = 'abracadabra';
+someStack[someStack.length] = "abracadabra";
 // good
-someStack.push('abracadabra');
+someStack.push("abracadabra");
 ```
 
 - 使用拓展运算符 ... 复制数组；
@@ -863,7 +872,7 @@ const itemsCopy = [...items];
 - 使用 Array#from 把一个类数组对象转换成数组；
 
 ```javascript
-const foo = document.querySelectorAll('.foo');
+const foo = document.querySelectorAll(".foo");
 const nodes = Array.from(foo);
 ```
 
@@ -900,18 +909,18 @@ const second = arr[1];
 const [first, second] = arr;
 ```
 
-### 5、Strings字符处理
+### 5、Strings 字符处理
 
 程序化生成字符串时，使用模板字符串代替字符串连接。
 
 ```javascript
 // bad
 function sayHi(name) {
-  return 'How are you, ' + name + '?';
+  return "How are you, " + name + "?";
 }
 // bad
 function sayHi(name) {
-  return ['How are you, ', name, '?'].join();
+  return ["How are you, ", name, "?"].join();
 }
 // good
 function sayHi(name) {
@@ -946,7 +955,7 @@ function sayHi(name) {
 
 ```javascript
 // good
-[1, 2, 3].map(x => x * x);
+[1, 2, 3].map((x) => x * x);
 // good
 [1, 2, 3].reduce((total, n) => {
   return total + n;
@@ -962,11 +971,11 @@ function sayHi(name) {
 function Queue(contents = []) {
   this._queue = [...contents];
 }
-Queue.prototype.pop = function() {
+Queue.prototype.pop = function () {
   const value = this._queue[0];
   this._queue.splice(0, 1);
   return value;
-}
+};
 // good
 class Queue {
   constructor(contents = []) {
@@ -984,14 +993,14 @@ class Queue {
 
 ```javascript
 // bad
-const inherits = require('inherits');
+const inherits = require("inherits");
 function PeekableQueue(contents) {
   Queue.apply(this, contents);
 }
 inherits(PeekableQueue, Queue);
-PeekableQueue.prototype.peek = function() {
+PeekableQueue.prototype.peek = function () {
   return this._queue[0];
-}
+};
 // good
 class PeekableQueue extends Queue {
   peek() {
@@ -1004,11 +1013,11 @@ class PeekableQueue extends Queue {
 
 ```javascript
 // bad
-Jedi.prototype.jump = function() {
+Jedi.prototype.jump = function () {
   this.jumping = true;
   return true;
 };
-Jedi.prototype.setHeight = function(height) {
+Jedi.prototype.setHeight = function (height) {
   this.height = height;
 };
 const luke = new Jedi();
@@ -1026,8 +1035,7 @@ class Jedi {
   }
 }
 const luke = new Jedi();
-luke.jump()
-  .setHeight(20);
+luke.jump().setHeight(20);
 ```
 
 ### 8、函数参数
@@ -1038,11 +1046,11 @@ luke.jump()
 // bad
 function concatenateAll() {
   const args = Array.prototype.slice.call(arguments);
-  return args.join('');
+  return args.join("");
 }
 // good
 function concatenateAll(...args) {
-  return args.join('');
+  return args.join("");
 }
 ```
 
@@ -1085,7 +1093,7 @@ for (let num of numbers) {
 sum === 15;
 // good
 let sum = 0;
-numbers.forEach((num) => sum += num);
+numbers.forEach((num) => (sum += num));
 sum === 15;
 // best (use the functional force)
 const sum = numbers.reduce((total, num) => total + num, 0);
@@ -1116,9 +1124,9 @@ export default es6;
 
 ```javascript
 // bad
-import * as AirbnbStyleGuide from './AirbnbStyleGuide';
+import * as AirbnbStyleGuide from "./AirbnbStyleGuide";
 // good
-import AirbnbStyleGuide from './AirbnbStyleGuide';
+import AirbnbStyleGuide from "./AirbnbStyleGuide";
 ```
 
 - 不要从 import 中直接 export。

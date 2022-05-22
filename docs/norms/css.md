@@ -60,34 +60,34 @@
 - CSS 属性的声明顺序与性能无关，但是为了易于阅读统一规范 按如下顺序
 
 ```css
-  .declaration-order {
-    /* 定位 */
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    float: right;
-    /* 盒模型 */
-    display: block;
-    width: 100px;
-    height: 100px;
-    /* 外观 */
-    border: 1px solid #e5e5e5;
-    border-radius: 3px;
-    background-color: #f5f5f5;
-    /* 排版 */
-    color: #333;
-    text-align: center;
-    font: normal 13px "Helvetica Neue", sans-serif;
-    line-height: 1.5;
-    /*透明度*/
-    opacity: 1;
-  }
-  ```
+.declaration-order {
+  /* 定位 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  float: right;
+  /* 盒模型 */
+  display: block;
+  width: 100px;
+  height: 100px;
+  /* 外观 */
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+  /* 排版 */
+  color: #333;
+  text-align: center;
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  /*透明度*/
+  opacity: 1;
+}
+```
 
-- 如兼容性要求可满足flex布局，可以优先采用
+- 如兼容性要求可满足 flex 布局，可以优先采用
 
 - 项目上线前先添加兼容性前缀 [Autoprefixer](https://autoprefixer.github.io/)，然后压缩代码
 

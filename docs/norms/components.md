@@ -16,24 +16,24 @@
 
 ```js
 // index.js
-import tree from './tree.vue'
-import treeItem from './treeItem.vue'
+import tree from "./tree.vue";
+import treeItem from "./treeItem.vue";
 
-export default tree
-export { treeItem }
+export default tree;
+export { treeItem };
 ```
 
 然后就可以这样调用一个组件：
 
 ```js
-import tree, { treeItem } from 'components/tree'
+import tree, { treeItem } from "components/tree";
 
 export default {
-    components: {
-        tree,
-        treeItem
-    }
-}
+  components: {
+    tree,
+    treeItem,
+  },
+};
 ```
 
 ## 视图/容器组件

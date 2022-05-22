@@ -11,26 +11,27 @@
 一个简单的 Vue 单元测试用例：
 
 ```js
-import Vue from 'vue'
-import Hello from 'src/components/Hello'
+import Vue from "vue";
+import Hello from "src/components/Hello";
 
-describe('Hello.vue', () => {
-  it('should render correct contents', () => {
+describe("Hello.vue", () => {
+  it("should render correct contents", () => {
     const vm = new Vue({
-      el: document.createElement('div'),
-      render: (h) => h(Hello)
-    })
-    expect(vm.$el.querySelector('.hello h1').textContent)
-      .to.equal('Welcome to Your Vue.js App')
-  })
-})
+      el: document.createElement("div"),
+      render: (h) => h(Hello),
+    });
+    expect(vm.$el.querySelector(".hello h1").textContent).to.equal(
+      "Welcome to Your Vue.js App"
+    );
+  });
+});
 ```
 
-在单元测试环境中，被测试组件将与其他 Vue 组件和模块（如：vuex、vueRouter等）隔离。这意味着如果一个组件依赖其他组件或模块，会难以达到单元测试的条件。
+在单元测试环境中，被测试组件将与其他 Vue 组件和模块（如：vuex、vueRouter 等）隔离。这意味着如果一个组件依赖其他组件或模块，会难以达到单元测试的条件。
 
 **期望：**
 
-> 很多组件的渲染输出由它的props决定。事实上，如果一个组件的渲染输出完全取决于它的props，那么它会让测试变得简单，就好像断言不同参数的纯函数的返回值。        *--[编写可被测试的组件](https://vuefe.cn/guide/unit-testing.html#编写可被测试的组件)*
+> 很多组件的渲染输出由它的 props 决定。事实上，如果一个组件的渲染输出完全取决于它的 props，那么它会让测试变得简单，就好像断言不同参数的纯函数的返回值。 _--[编写可被测试的组件](https://vuefe.cn/guide/unit-testing.html#编写可被测试的组件)_
 
 组件编写保持单一的原则，尽量保证每一个文件的代码行数不要超过 100 行，也尽量保证组件可独立的运行，便于编写单元测试。
 
@@ -46,21 +47,22 @@ describe('Hello.vue', () => {
 
 ```js
 module.exports = {
-    'default e2e tests': function (browser) {
-        // doc: http://nightwatchjs.org/api
-        const devServer = browser.globals.devServerURL
+  "default e2e tests": function (browser) {
+    // doc: http://nightwatchjs.org/api
+    const devServer = browser.globals.devServerURL;
 
-        browser.url(devServer)
-            .waitForElementVisible('#app', 10000)
-            .waitForElementVisible('button', 2000)
-            .click('button')
-            .pause(3000)
+    browser
+      .url(devServer)
+      .waitForElementVisible("#app", 10000)
+      .waitForElementVisible("button", 2000)
+      .click("button")
+      .pause(3000);
 
-        browser.expect.element('p').text.to.match(/共[ ]?[1-9][ ]?条数据/)
-        browser.expect.element('ul li').to.be.visible
-        browser.end()
-    }
-}
+    browser.expect.element("p").text.to.match(/共[ ]?[1-9][ ]?条数据/);
+    browser.expect.element("ul li").to.be.visible;
+    browser.end();
+  },
+};
 ```
 
 所做的工作有：
