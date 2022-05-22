@@ -16,10 +16,5 @@
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
     "vuepress": "^1.9.7"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
